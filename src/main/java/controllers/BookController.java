@@ -9,6 +9,7 @@ import entities.Author;
 import entities.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,20 +40,23 @@ public class BookController {
     }
     
     @RequestMapping(method=RequestMethod.POST)
-    public String save(@ModelAttribute("book") Book book){
+    public String save(@ModelAttribute("book") Book book, BindingResult result){
+        if(result.hasErrors()){
+            return "bookForm";
+        }
         service.addBook(book);
         return "redirect:/book.htm";
     }
     
-    @RequestMapping(value="/delete/{ISBN}", method=RequestMethod.GET)
-    public String deleteAuthor(@PathVariable String ISBN){
-        service.deleteBook(ISBN);
-        return "redirect:/author.htm";
+    @RequestMapping(value="/delete/{id}", method=RequestMethod.GET)
+    public String deleteBook(@PathVariable long id){
+        service.deleteBook(id);
+        return "redirect:/book.htm";
     }
     
-        @RequestMapping(value="/{ISBN}", method=RequestMethod.GET)
-    public ModelAndView getBookEditForm(@PathVariable String ISBN){
-        return new ModelAndView("updateBookForm","book",service.getBookByISBN(ISBN));
+        @RequestMapping(value="/{id}", method=RequestMethod.GET)
+    public ModelAndView getBookEditForm(@PathVariable long id){
+        return new ModelAndView("updateBookForm","book",service.getBookById(id));
     }
     
     @RequestMapping(value="/update", method=RequestMethod.POST)

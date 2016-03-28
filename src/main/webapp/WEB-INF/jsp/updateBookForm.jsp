@@ -23,8 +23,10 @@
             </c:forEach>
         </spring:hasBindErrors>
         <c:url var="url_updateBook" value="/book/update.htm" />
-        <form:form commandName="book" id="bookForm" role="form" method="POST" action="${url_updateBook}">             
-             <p class="form-group">
+        <form:form commandName="book" id="bookForm" role="form" method="POST" action="${url_updateBook}">        
+            <form:input path="id" name="id" type="hidden" value="${book.id}" />
+
+            <p class="form-group">
                 <label class="control-label" for="title"><spring:message code="lbl.title" text="title" /></label>
                 <form:input path="title" id="title" name="title" value="${book.title}"/>
                 <form:errors path="title"/>

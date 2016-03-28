@@ -7,6 +7,7 @@ package controllers;
 import entities.Author;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,7 +33,10 @@ public class AuthorController {
     }
     
     @RequestMapping(method=RequestMethod.POST)
-    public String save(@ModelAttribute("author") Author author){
+    public String save(@ModelAttribute("author") Author author, BindingResult result){
+        if(result.hasErrors()){            
+            return "authorForm";
+        }
         service.addAuthor(author);
         return "redirect:/author.htm";
     }

@@ -16,6 +16,12 @@
     
     <h1><spring:message code="lbl.authorFormH1" text="author sign up" /></h1>
         <jsp:include page="nav.jsp"/>
+        <spring:hasBindErrors name="authorForm">
+            <c:forEach var="error" items="${errors.allErrors}">
+		<b><spring:message message="${error}" /></b>
+		<br />
+            </c:forEach>
+        </spring:hasBindErrors>
         <c:url var="url_newAuthor" value="/author.htm" />
         <form:form commandName="author" id="authorForm" role="form" method="POST" action="${url_newAuthor}"> 
             

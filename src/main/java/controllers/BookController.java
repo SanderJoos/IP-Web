@@ -19,7 +19,7 @@ import services.ServiceFacade;
 
 /**
  *
- * @author Sander_2
+ * @author Sander Joos
  */
 
 @Controller
@@ -28,34 +28,34 @@ public class BookController {
     
     @Autowired
     private ServiceFacade service;
-    
+        
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView getBooks(){
         return new ModelAndView("bookOverview","books",service.getAllBooks());
     }
     
-     @RequestMapping(value="/new", method=RequestMethod.GET)
+    @RequestMapping(value="/new", method=RequestMethod.GET)
     public ModelAndView getNewBookForm(){
         return new ModelAndView("bookForm","book",new Book());
     }
     
     @RequestMapping(method=RequestMethod.POST)
     public String save(@ModelAttribute("book") Book book, BindingResult result){
-        if(result.hasErrors()){
+        if(result.hasErrors()){            
             return "bookForm";
         }
         service.addBook(book);
         return "redirect:/book.htm";
     }
-    
+      
     @RequestMapping(value="/delete/{id}", method=RequestMethod.GET)
     public String deleteBook(@PathVariable long id){
         service.deleteBook(id);
         return "redirect:/book.htm";
     }
     
-        @RequestMapping(value="/{id}", method=RequestMethod.GET)
-    public ModelAndView getBookEditForm(@PathVariable long id){
+    @RequestMapping(value="/{id}", method=RequestMethod.GET)
+    public ModelAndView getdBookEditForm(@PathVariable long id){
         return new ModelAndView("updateBookForm","book",service.getBookById(id));
     }
     
@@ -64,5 +64,4 @@ public class BookController {
         service.updateBook(book);
         return "redirect:/book.htm";
     }
-    
 }

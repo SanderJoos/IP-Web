@@ -27,8 +27,9 @@
                     <td>${book.title}</td>
                     <td>${book.ISBN}</td>
                     <td>${book.score}</td>
-                    <td><a href="<c:url value="/book/${book.ISBN}.htm" />">edit</a></td>
-                    <td><a href="<c:url value="/book/delete/${book.ISBN}.htm" />">delete</a></td>
+                    <td>${book.id}</td>
+                    <td><a href="<c:url value="/book/${book.id}.htm" />">edit</a></td>
+                    <td><a href="<c:url value="/book/delete/${book.id}.htm" />">delete</a></td>
                 </tr>
             </c:forEach>
         </table>

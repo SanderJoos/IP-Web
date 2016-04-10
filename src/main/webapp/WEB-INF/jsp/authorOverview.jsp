@@ -26,9 +26,11 @@
                     <td>${author.name}</td>
                     <td>${author.lastName}</td>
                     <td>${author.id}</td>
+                    <td>${author.averageScore}</td>
                     <td><a href="<c:url value="author/${author.id}.htm" />">edit</a></td>
                     <td><a href="<c:url value="author/delete/${author.id}.htm" />">delete</a></td>
                     <td><a href="<c:url value="author/books/${author.id}.htm" />">show books</a></td>
+                    <td><a href="<c:url value="author/addBookForm/${author.id}.htm" />">add book </a></td>
                 </tr>
             </c:forEach>
         </table>

@@ -5,6 +5,7 @@ package controllers;
  */
 
 import entities.Author;
+import entities.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -61,5 +62,18 @@ public class AuthorController {
     @RequestMapping(value="/books/{id}",method=RequestMethod.GET)
     public ModelAndView getBooks(@PathVariable long id){
         return new ModelAndView("redirect:/book.htm","books",service.getAuthorById(id).getBooks());
+    }
+    
+    @RequestMapping(value="/addBookForm/{id}",method=RequestMethod.GET)
+    public ModelAndView addBookForm(@PathVariable long id){
+        ModelAndView modelAndView = new ModelAndView("addBookForm", "author", service.getAuthorById(id));
+        modelAndView.addObject("books", service.getAllBookTitles());
+        return modelAndView;
+    }
+    
+    @RequestMapping(value="/addBook/{id}",method=RequestMethod.POST)
+    public String addBook(@ModelAttribute("book") Book book, @PathVariable long id){
+        service.addBookToAuthor(service.getAuthorById(id), book);
+        return "redirect:/author.htm";
     }
 }

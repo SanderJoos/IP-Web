@@ -17,9 +17,10 @@
         <jstl.version>1.2.1</jstl.version>
         <glassfish.version>1.2.2</glassfish.version>
         <javax.version>7.0</javax.version>
-        <IP-Domain.version>3.1.0</IP-Domain.version>
+        <IP-Domain.version>3.1.5</IP-Domain.version>
         <eclipsePersistence.version>2.5.2</eclipsePersistence.version>
         <derby.version>10.12.1.1</derby.version>
+        <glassfish.home>D:\Program Files\glassfish-4.1.1</glassfish.home>
     </properties>
     
     <dependencies>
@@ -220,6 +221,30 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.glassfish.maven.plugin</groupId>
+                <artifactId>maven-glassfish-plugin</artifactId>
+                <version>2.1</version>
+                <configuration>
+                    <glassfishDirectory>${glassfish.home}/glassfish</glassfishDirectory>
+                    <user>${glassfish.user}</user>
+                    <passwordFile>${glassfish.passfile}t</passwordFile>
+                    <debug>true</debug>
+                    <terse>false</terse>
+                    <echo>true</echo>
+                    <domain>
+                        <name>domain1</name>
+                        <adminPort>4848</adminPort>
+                        <httpPort>8080</httpPort>
+                    </domain>
+                    <components>
+                        <component>
+                            <name>${project.artifactId}</name>
+                            <artifact>target/${project.build.finalName}.war</artifact>
+                        </component>
+                    </components>
+                </configuration>
             </plugin>
         </plugins>
     </build>

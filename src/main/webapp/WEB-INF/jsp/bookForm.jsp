@@ -16,12 +16,6 @@
     
         <h1><spring:message code="lbl.bookFormH1" text="book form" /></h1>
         <jsp:include page="nav.jsp"/>
-        <spring:hasBindErrors name="bookForm">
-            <c:forEach var="error" items="${errors.allErrors}">
-		<b><spring:message message="${error}" /></b>
-		<br />
-            </c:forEach>
-        </spring:hasBindErrors>
         <c:url var="url_newBook" value="/book.htm" />
         <form:form commandName="book" id="bookForm" role="form" method="POST" action="${url_newBook}">             
             <p class="form-group">

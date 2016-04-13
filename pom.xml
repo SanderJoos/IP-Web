@@ -17,7 +17,7 @@
         <jstl.version>1.2.1</jstl.version>
         <glassfish.version>1.2.2</glassfish.version>
         <javax.version>7.0</javax.version>
-        <IP-Domain.version>3.1.5</IP-Domain.version>
+        <IP-Domain.version>3.2.0</IP-Domain.version>
         <eclipsePersistence.version>2.5.2</eclipsePersistence.version>
         <derby.version>10.12.1.1</derby.version>
         <glassfish.home>D:\Program Files\glassfish-4.1.1</glassfish.home>

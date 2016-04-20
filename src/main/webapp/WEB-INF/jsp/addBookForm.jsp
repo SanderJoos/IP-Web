@@ -20,8 +20,7 @@
         <form:form commandName="author" id="authorForm" role="form" method="POST" action="${url_addBook}"> 
             <form:input path="id" name="id" type="hidden" value="${author.id}" />
             <form:select id="slcRole" path="books">
-                <form:option label="SELECT" value="${null}"/>
-                <form:options items="${books}" itemValue="bookName" itemLabel="book" />
+                <form:options items="${bookList}" itemLabel="title" itemValue="id"/>
             </form:select>
             <p>
                 <label for="save">&nbsp;</label>

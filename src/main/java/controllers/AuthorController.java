@@ -67,7 +67,7 @@ public class AuthorController {
     @RequestMapping(value="/addBookForm/{id}",method=RequestMethod.GET)
     public ModelAndView addBookForm(@PathVariable long id){
         ModelAndView modelAndView = new ModelAndView("addBookForm", "author", service.getAuthorById(id));
-        modelAndView.addObject("books", service.getAllBookTitles());
+        modelAndView.addObject("bookList", service.getAllBooks());
         return modelAndView;
     }
     

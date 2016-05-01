@@ -14,13 +14,13 @@ import services.ServiceFacade;
  *
  * @author Sander_2
  */
-public class BookConverter implements Converter<String, Book>{
+public class BookConverter implements Converter<Long, Book>{
     
     @Autowired
     private ServiceFacade facade;
     
     @Override
-    public Book convert(String title){
-        return facade.getBook(title);
+    public Book convert(Long id){
+        return facade.getBookById(id);
     }
 }

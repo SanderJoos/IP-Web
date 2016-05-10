@@ -9,6 +9,7 @@
 	<li><a href="<c:url value="/index.htm"/>">Home</a></li>
         <li><a href="<c:url value="/author.htm"/>">Authors</a></li>
         <li><a href="<c:url value="/book.htm"/>">Books</a></li>
+        <li><a href="<c:url value="/agot.htm"/>">Agot Books</a></li>
     </ul>
 </nav>
 

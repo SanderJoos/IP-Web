@@ -25,6 +25,6 @@ public class AgotController {
     
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView getAgotBooks(){
-        return new ModelAndView("agotBooks","agotBooks",this.service.getAGOTBookLibrary().toString());
+        return new ModelAndView("agotBooks","agotBooks",this.service.getAGOTBooks());
     }
 }

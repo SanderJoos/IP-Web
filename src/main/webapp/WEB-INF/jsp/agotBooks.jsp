@@ -16,7 +16,11 @@
     <body>
         <h1>AGOT Books</h1>
         <jsp:include page="nav.jsp"/>
-        <p>${agotBooks}</p>
+        <c:forEach var="book" items="${agotBooks}">
+                <tr>
+                    <td>${book.name}</td>
+                </tr>
+            </c:forEach>
     </body>
     <jsp:include page="footer.jsp"/>
 </html>

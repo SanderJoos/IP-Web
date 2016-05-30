@@ -14,7 +14,9 @@
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
     <mvc:annotation-driven conversion-service="converterService"/>   
-    <context:component-scan base-package="controllers"/>        
+    
+    <context:component-scan base-package="controllers"/>
+            
     <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
         <property name="mappings">
             <props>
@@ -48,6 +50,14 @@
     <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
         <property name="basename" value="classpath:messages" />
         <property name="defaultEncoding" value="UTF-8" />
+    </bean>
+    
+    <bean id="converterService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <bean class="converter.BookConverter"/>
+            </list>
+        </property>
     </bean>
 
 </beans>

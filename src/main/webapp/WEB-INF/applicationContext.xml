@@ -15,13 +15,7 @@
         </constructor-arg>
     </bean>  
     
-    <bean id="converterService" class="org.springframework.context.support.ConversionServiceFactoryBean">
-        <property name="converters">
-            <list>
-                <bean class="converter.BookConverter"/>
-            </list>
-        </property>
-    </bean>
+    
     
     
  
